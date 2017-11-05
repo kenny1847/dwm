@@ -4,16 +4,17 @@
 
 /* appearance */
 static const char *fonts[] = {
-	"Terminus:size=12",
-	"FontAwesome:size=12"
+	"Fira Mono:size=14",
+	"FontAwesome:size=14"
 };
-static const char dmenufont[]       = "Terminus:size=12";
-static const char normbordercolor[] = "#404040";
-static const char normbgcolor[]     = "#131314";
-static const char normfgcolor[]     = "#9B9696";
-static const char selbordercolor[]  = "#408075";
-static const char selbgcolor[]      = "#131314";
-static const char selfgcolor[]      = "#408075";
+
+static const char dmenufont[]       = "Fira Mono:size=14";
+static const char normbordercolor[] = "#586e75";
+static const char normbgcolor[]     = "#002b36";
+static const char normfgcolor[]     = "#839496";
+static const char selbordercolor[]  = "#2aa198";
+static const char selbgcolor[]      = "#002b36";
+static const char selfgcolor[]      = "#2aa198";
 static const char *colors[SchemeLast][3]      = {
 	/*               fg           bg           border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
