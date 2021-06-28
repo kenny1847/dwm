@@ -39,9 +39,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                        instance    title       tags mask     isfloating   monitor */
-	{ "Google-chrome",              NULL,       NULL,       1 << 2,       0,           -1},
-	{ "google-chrome",              NULL,       NULL,       1 << 2,       0,           -1},
+	{ "chromium-browser",           NULL,       NULL,       1 << 2,       0,           -1},
+	{ "Chromium-browser",           NULL,       NULL,       1 << 2,       0,           -1},
 	{ "Telegram",                   NULL,       NULL,       1 << 3,       0,           -1},
+	{ "jetbrains-idea",             NULL,       NULL,       1 << 0,       0,           -1},
 };
 
 /* layout(s) */
@@ -79,9 +80,10 @@ static const char *dec_kbd_backlight[] = { "xbacklight", "-ctrl", "asus::kbd_bac
 /* launchers */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]    = { "dmenu_run", "-m",dmenumon, "-fn",dmenufont, "-nb",normbgcolor, "-nf",normfgcolor, "-sb",selbgcolor, "-sf",selfgcolor, NULL };
-static const char *termcmd[]     = { "urxvt256c-mlc", NULL };
+static const char *termcmd[]     = { "urxvtc", NULL };
 static const char *telegramcmd[] = { "/opt/Telegram/Telegram", NULL };
 static const char *scrotcmd[]    = { "scrot", "-q", "100", "-e", "mv $f ~/Screenshots/", NULL };
+static const char *lockcmd[]     = { "/usr/local/bin/lock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +101,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return,       spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_t,            spawn,          {.v = telegramcmd } },
 	{ 0,                          XK_Print,          spawn,          {.v = scrotcmd } },
+	{ MODKEY|ShiftMask,             XK_w,            spawn,          {.v = lockcmd } },
 	/*                            Misc Commands                              */
 	{ MODKEY,                       XK_b,            togglebar,      {0} },
 	{ MODKEY,                       XK_j,            focusstack,     {.i = +1 } },
@@ -118,6 +121,7 @@ static Key keys[] = {
 	{ ALTKEY|ShiftMask,             XK_space,        togglefloating, {0} },
 	{ MODKEY,                       XK_0,            view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,            tag,            {.ui = ~0 } },
+	TAGKEYS(                        XK_Escape,                       0)
 	TAGKEYS(                        XK_grave,                        0)
 	TAGKEYS(                        XK_1,                            1)
 	TAGKEYS(                        XK_2,                            2)
@@ -127,6 +131,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_F2,                           6)
 	TAGKEYS(                        XK_F3,                           7)
 	TAGKEYS(                        XK_F4,                           8)
+	TAGKEYS(                        XK_6,                            5)
+	TAGKEYS(                        XK_7,                            6)
+	TAGKEYS(                        XK_8,                            7)
+	TAGKEYS(                        XK_9,                            8)
 	{ MODKEY|ShiftMask,             XK_e,            quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_r,            quit,           {.i = 1} },
 };
